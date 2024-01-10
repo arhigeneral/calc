@@ -10,6 +10,7 @@ public class Main {
         } else{
             System.out.println(arabCalc(stroka));
         }
+
     }
     public static int romanToInt(String roman){
 
@@ -49,7 +50,7 @@ public class Main {
                 throw new CalcException("throws Exception");
             }
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            return "throws Exception";
+            throw new CalcException("throws Exception");
         }
     }
     public static String arabCalc(String input) throws CalcException{
@@ -79,7 +80,7 @@ public class Main {
                 throw new CalcException("throws Exception");
             }
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
-            return "throws Exception";
+            throw new CalcException("throws Exception");
         }
     }
 }
