@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CalcException {
         Scanner in = new Scanner(System.in);
         String stroka = in.nextLine();
 
@@ -22,7 +22,7 @@ public class Main {
         }
         return 0;
     }
-    public static String romeCalc(String input){
+    public static String romeCalc(String input) throws CalcException{
         String stroka = input;
         String[] nums = stroka.split(" ");
         try {
@@ -30,14 +30,14 @@ public class Main {
             int num2 = romanToInt(nums[2]);
             String ans = new String();
             if (num1 == 0 | num2 == 0) {
-                return "throws Exception";
+                throw new CalcException("throws Exception");
             } else if (nums.length >= 4) {
-                return "throws Exception";
+                throw new CalcException("throws Exception");
             } else if (nums[1].equals("+")) {
                 return RomanNumberConverter.toRoman(num1 + num2);
             } else if (nums[1].equals("-")) {
                 if (num1 < num2){
-                    return "throws Exception";
+                    throw new CalcException("throws Exception");
                 } else{
                     return RomanNumberConverter.toRoman(num1 - num2);
                 }
@@ -46,13 +46,13 @@ public class Main {
             } else if (nums[1].equals("/")) {
                 return RomanNumberConverter.toRoman(num1 / num2);
             } else {
-                return "throws Exception";
+                throw new CalcException("throws Exception");
             }
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             return "throws Exception";
         }
     }
-    public static String arabCalc(String input) {
+    public static String arabCalc(String input) throws CalcException{
         String stroka = input;
         String[] nums = stroka.split(" ");
         try {
@@ -60,9 +60,9 @@ public class Main {
             int num2 = Integer.parseInt(nums[2]);
             String ans = new String();
             if (num1 >= 11 | num2 >= 11 | num1 <= 0 | num2 <= 0) {
-                return "throws Exception";
+                throw new CalcException("throws Exception");
             } else if (nums.length >= 4) {
-                return "throws Exception";
+                throw new CalcException("throws Exception");
             } else if (nums[1].equals("+")) {
                 ans = Integer.toString(num1 + num2);
                 return ans;
@@ -76,7 +76,7 @@ public class Main {
                 ans = Integer.toString(num1 / num2);
                 return ans;
             } else {
-                return "throws Exception";
+                throw new CalcException("throws Exception");
             }
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             return "throws Exception";
